@@ -16,24 +16,17 @@
       box-sizing: border-box;
     }
     body {
-      margin: 0; 
-      font-family: 'Roboto', sans-serif; 
-      background: #0d0d0d; 
-      color: #eee; 
-      line-height: 1.6;
-      padding-top: 80px; /* ruimte voor header */
+      margin: 0; font-family: 'Roboto', sans-serif; background: #0d0d0d; color: #eee; line-height: 1.6;
     }
     a {
-      color: #ff4444; 
-      text-decoration: none;
+      color: #ff4444; text-decoration: none;
     }
     a:hover {
       text-decoration: underline;
     }
 
     header {
-      background-color: transparent; /* transparante header */
-      height: 80px;
+      background-color: transparent;
       padding: 1rem 2rem;
       display: flex;
       align-items: center;
@@ -41,8 +34,6 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      color: #ff4444;
-      text-shadow: 0 0 4px #000;
     }
     header img {
       height: 60px;
@@ -121,21 +112,13 @@
       gap: 1.5rem;
       list-style: none;
       padding: 0;
+      text-align: center;
     }
     .ledenlijst li {
       background: #1a1a1a;
       padding: 1rem;
       border-radius: 8px;
       box-shadow: 0 0 10px #ff4444aa;
-      text-align: center;
-    }
-    .ledenlijst img {
-      border-radius: 50%;
-      width: 100px;
-      height: 100px;
-      object-fit: cover;
-      margin-bottom: 0.8rem;
-      border: 2px solid #ff4444;
     }
 
     /* Footer */
@@ -151,13 +134,7 @@
     @media(max-width: 600px) {
       header {
         flex-direction: column;
-        height: auto;
-        padding: 1rem;
-        padding-top: 1rem;
-        padding-bottom: 1rem;
-      }
-      body {
-        padding-top: 120px; /* meer ruimte voor grotere header op mobiel */
+        gap: 1rem;
       }
       .hero h1 {
         font-size: 2rem;
@@ -202,15 +179,12 @@
   <h2>Onze leden</h2>
   <ul class="ledenlijst">
     <li>
-      <img src="leden/celine.jpg" alt="Céline" />
       <strong>Céline</strong><br />Bikerchick_mt07
     </li>
     <li>
-      <img src="leden/benjamin.jpg" alt="Benjamin" />
       <strong>Benjamin</strong><br />Benjamin.desaedeleer
     </li>
     <li>
-      <img src="leden/judith.jpg" alt="Judith" />
       <strong>Judith</strong><br />Faithless.123
     </li>
   </ul>

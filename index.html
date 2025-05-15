@@ -3,169 +3,122 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Shameless Bikers - Motorclub voor vrijheid en broederschap</title>
-  <meta name="description" content="Shameless Bikers, een motorclub voor vrijheid, avontuur en broederschap.">
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
-
-  <!-- Google Fonts -->
+  <title>Shameless Bikers</title>
+  <meta name="description" content="Motorclub voor vrijheid, avontuur en broederschap.">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
-
   <style>
-    *, *::before, *::after {
-      box-sizing: border-box;
-    }
+    /* Basis */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
-      margin: 0; font-family: 'Roboto', sans-serif; background: #0d0d0d; color: #eee; line-height: 1.6;
+      margin: 0; font-family: 'Roboto', sans-serif;
+      background: #0d0d0d; color: #eee; line-height: 1.6;
     }
-    a {
-      color: #ff4444; text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
+    a { color: #ff4444; text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
+    /* Header */
     header {
-      background-color: rgba(0,0,0,0.6);
-      padding: 1rem 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
+      position: sticky; top: 0; z-index: 999;
+      background: rgba(0,0,0,0.6); backdrop-filter: blur(6px);
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 1.5rem;
     }
     header img {
-      height: 60px;
-      border-radius: 8px;
+      height: 50px; border-radius: 8px;
       box-shadow: 0 0 10px #ff4444aa;
     }
+
+    /* Navigatie */
     nav {
-      position: relative;
+      display: flex; align-items: center;
     }
     nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-      margin: 0;
-      padding: 0;
+      display: flex; gap: 1.5rem;
+      list-style: none; margin: 0; padding: 0;
     }
-    nav li {
-      font-weight: 700;
-    }
+    nav li { font-weight: 700; }
 
-    /* Hamburger */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
+    .menu-toggle {
+      display: none; flex-direction: column; gap: 4px;
+      cursor: pointer; margin-left: 1rem;
     }
-    .hamburger span {
-      height: 3px;
-      width: 25px;
-      background: #ff4444;
-      border-radius: 3px;
-    }
-
-    /* Mobile menu */
-    @media(max-width: 768px) {
-      .hamburger {
-        display: flex;
-      }
-      nav ul {
-        position: absolute;
-        top: 70px;
-        right: 0;
-        background: #111;
-        flex-direction: column;
-        gap: 1rem;
-        padding: 1rem;
-        border-radius: 8px;
-        display: none;
-      }
-      nav ul.active {
-        display: flex;
-      }
+    .menu-toggle span {
+      width: 25px; height: 3px; background: #ff4444;
+      border-radius: 2px;
     }
 
     /* Hero */
     .hero {
       background: url('hero-bike.jpg') center/cover no-repeat;
       height: 80vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 0 1rem;
-      color: #fff;
-      text-shadow: 0 0 10px #000;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      text-align: center; padding: 0 1rem;
+      color: #fff; text-shadow: 0 0 10px #000;
     }
     .hero h1 {
       font-family: 'Montserrat', sans-serif;
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
+      font-size: 3rem; margin-bottom: 1rem;
+      text-transform: uppercase; letter-spacing: 0.15em;
     }
     .hero p {
-      font-size: 1.3rem;
-      margin-bottom: 2rem;
+      font-size: 1.2rem; margin-bottom: 2rem;
     }
     .btn-primary {
-      background-color: #ff4444;
-      color: white;
-      padding: 1rem 2rem;
-      font-weight: 700;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
+      background: #ff4444; color: white;
+      padding: 1rem 2rem; font-weight: bold;
+      border: none; border-radius: 8px;
+      cursor: pointer; text-transform: uppercase;
+      letter-spacing: 0.1em; transition: 0.3s;
     }
-    .btn-primary:hover {
-      background-color: #cc0000;
-    }
+    .btn-primary:hover { background: #cc0000; }
 
+    /* Secties */
     section {
-      max-width: 900px;
-      margin: 3rem auto;
-      padding: 0 1rem;
+      max-width: 900px; margin: 3rem auto; padding: 0 1rem;
+      scroll-margin-top: 100px;
     }
     section h2 {
       font-family: 'Montserrat', sans-serif;
-      font-size: 2rem;
-      color: #ff4444;
-      margin-bottom: 1rem;
-      text-align: center;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
+      font-size: 2rem; color: #ff4444;
+      text-align: center; text-transform: uppercase;
+      letter-spacing: 0.1em; margin-bottom: 1rem;
     }
     .ledenlijst {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
-      gap: 1.5rem;
-      list-style: none;
-      padding: 0;
-      font-size: 1.1rem;
-      text-align: center;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem; list-style: none; padding: 0; text-align: center;
     }
     .ledenlijst li {
-      background: #1a1a1a;
-      padding: 1rem;
-      border-radius: 8px;
-      box-shadow: 0 0 10px #ff4444aa;
+      background: #1a1a1a; padding: 1rem;
+      border-radius: 8px; box-shadow: 0 0 10px #ff4444aa;
     }
 
+    /* Footer */
     footer {
-      background: #000;
-      text-align: center;
-      padding: 2rem 1rem;
-      color: #aaa;
-      font-size: 0.9rem;
+      background: #000; text-align: center;
+      padding: 2rem 1rem; color: #aaa; font-size: 0.9rem;
+    }
+
+    /* Mobiel */
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        background: rgba(0,0,0,0.9);
+        position: absolute; top: 100%; right: 0;
+        width: 100%; display: none;
+        padding: 1rem 0;
+      }
+      nav ul.active { display: flex; }
+
+      .menu-toggle { display: flex; }
+
+      .hero h1 { font-size: 2rem; }
+      .hero p { font-size: 1rem; }
+
+      .btn-primary { width: 100%; }
+
+      section { margin: 2rem 1rem; }
     }
   </style>
 </head>
@@ -174,10 +127,10 @@
 <header>
   <img src="1000008850.jpg" alt="Shameless Bikers Logo" />
   <nav>
-    <div class="hamburger" id="hamburger">
+    <div class="menu-toggle" onclick="document.querySelector('nav ul').classList.toggle('active')">
       <span></span><span></span><span></span>
     </div>
-    <ul id="menu">
+    <ul>
       <li><a href="#over">Over ons</a></li>
       <li><a href="#leden">Leden</a></li>
       <li><a href="#events">Events</a></li>
@@ -197,8 +150,7 @@
 <section id="over">
   <h2>Over ons</h2>
   <p>
-    Shameless Bikers is een jonge motorgroep die de open wegen verkent. Wij geloven in broederschap, avontuur en het geluid van een krachtige motor. 
-    Onze ritten brengen ons door steden en bergen, en onze vriendschappen zijn gesmeed door asfalt en olie.
+    Shameless Bikers is een jonge motorgroep die de open wegen verkent. Wij geloven in broederschap, avontuur en het geluid van een krachtige motor.
   </p>
 </section>
 
@@ -251,18 +203,14 @@
 <footer>
   &copy; 2025 Shameless Bikers – Alle rechten voorbehouden
 </footer>
-
-<!-- Mobile menu toggle script -->
 <script>
-  const hamburger = document.getElementById('hamburger');
-  const menu = document.getElementById('menu');
-  hamburger.addEventListener('click', () => {
-    menu.classList.toggle('active');
-  });
-
+  // Sluit het menu automatisch na klikken op een link
   document.querySelectorAll('nav ul a').forEach(link => {
     link.addEventListener('click', () => {
-      menu.classList.remove('active');
+      const menu = document.querySelector('nav ul');
+      if (menu.classList.contains('active')) {
+        menu.classList.remove('active');
+      }
     });
   });
 </script>

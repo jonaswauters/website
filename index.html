@@ -5,99 +5,106 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Shameless Bikers</title>
   <style>
+    :root {
+      --main-bg: #0d0d0d;
+      --accent: #ff4444;
+      --text-light: #eeeeee;
+      --text-muted: #aaaaaa;
+      --section-bg: #1a1a1a;
+    }
+
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      background-color: #111;
-      color: #eee;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--main-bg);
+      color: var(--text-light);
+      line-height: 1.6;
     }
 
     header {
-      background-color: #222;
-      padding: 20px;
+      background-color: #000;
       text-align: center;
+      padding: 40px 20px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 3rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
 
     .slogan {
+      margin-top: 10px;
+      color: var(--text-muted);
       font-style: italic;
-      color: #bbb;
+    }
+
+    nav {
+      margin-top: 20px;
     }
 
     nav ul {
-      list-style: none;
-      padding: 0;
-      margin-top: 15px;
       display: flex;
       justify-content: center;
-      gap: 20px;
+      list-style: none;
+      padding: 0;
+      gap: 30px;
     }
 
     nav a {
-      color: #ff4444;
+      color: var(--accent);
       text-decoration: none;
       font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #fff;
     }
 
     section {
-      padding: 40px 20px;
-      max-width: 800px;
+      background-color: var(--section-bg);
+      padding: 60px 20px;
+      max-width: 900px;
       margin: auto;
+      border-radius: 8px;
+      margin-top: 40px;
+    }
+
+    section h2 {
+      color: var(--accent);
+      font-size: 2rem;
+      margin-bottom: 20px;
+      text-align: center;
     }
 
     .ledenlijst {
       list-style: square;
       padding-left: 20px;
+      font-size: 1.1rem;
     }
 
-    form {
-      display: flex;
-      flex-direction: column;
-    }
-
-    form input,
-    form textarea {
-      margin-bottom: 15px;
-      padding: 10px;
+    iframe {
+      width: 100%;
+      height: 800px;
       border: none;
-      border-radius: 5px;
-    }
-
-    form button {
-      background-color: #ff4444;
-      color: white;
-      border: none;
-      padding: 10px;
-      border-radius: 5px;
-      cursor: pointer;
+      background-color: white;
+      border-radius: 8px;
     }
 
     footer {
       text-align: center;
-      background-color: #222;
-      padding: 15px;
-      margin-top: 40px;
-    }
-
-    /* Poll styles */
-    #poll {
-      background-color: #1a1a1a;
-      padding: 20px;
-      border-radius: 10px;
-      margin-top: 40px;
-    }
-    #poll form {
-      color: #eee;
-    }
-    #poll button {
-      background-color: #ff4444;
-      color: white;
-      padding: 8px 12px;
-      border: none;
-      border-radius: 5px;
+      padding: 30px 20px;
+      background-color: #000;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-top: 60px;
     }
   </style>
 </head>
 <body>
+
   <header>
     <h1>Shameless Bikers</h1>
     <p class="slogan">Vrijheid. Broederschap. Benzine.</p>
@@ -105,8 +112,7 @@
       <ul>
         <li><a href="#over">Over ons</a></li>
         <li><a href="#leden">Leden</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#poll">Poll</a></li>
+        <li><a href="#googleform">Inschrijven</a></li>
       </ul>
     </nav>
   </header>
@@ -114,92 +120,36 @@
   <section id="over">
     <h2>Over ons</h2>
     <p>
-      Shameless Bikers is een hechte motorgroep die de wegen onveilig maakt.
-      We rijden voor de vrijheid, de broederschap en de liefde voor de machine.
+      Shameless Bikers is een trotse motorgroep die de open wegen verkent. Wij geloven in broederschap, avontuur en het geluid van een krachtige motor. 
+      Onze ritten brengen ons door steden en bergen, en onze vriendschappen zijn gesmeed door asfalt en olie.
     </p>
   </section>
 
   <section id="leden">
     <h2>Onze leden</h2>
     <ul class="ledenlijst">
-      <li>Big Mike - Oprichter</li>
-      <li>Diesel Dave </li>
-      <li>Roxy Rider </li>
-      <li>Iron Joe </li>
+      <li>Big Mike – Oprichter en Voorzitter</li>
+      <li>Diesel Dave – Road Captain</li>
+      <li>Roxy Rider – Hoofdmonteur</li>
+      <li>Iron Joe – Sergeant-at-Arms</li>
     </ul>
   </section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <form>
-      <label for="naam">Naam:</label>
-      <input type="text" id="naam" name="naam" required />
-
-      <label for="bericht">Bericht:</label>
-      <textarea id="bericht" name="bericht" rows="4" required></textarea>
-
-      <button type="submit">Verstuur</button>
-    </form>
-  </section>
-
-  <section id="poll">
-    <h2>Ride-out Poll</h2>
-    <form id="ridePoll">
-      <p>Welke ride-out geniet jouw voorkeur?</p>
-      <label>
-        <input type="radio" name="ride" value="Zaterdag 1 juni - Veluwe" required />
-        Zaterdag 1 juni - Veluwe
-      </label><br />
-      <label>
-        <input type="radio" name="ride" value="Zondag 9 juni - Limburgse Heuvels" />
-        Zondag 9 juni - Limburgse Heuvels
-      </label><br />
-      <label>
-        <input type="radio" name="ride" value="Zaterdag 15 juni - Zeeuwse kust" />
-        Zaterdag 15 juni - Zeeuwse kust
-      </label><br /><br />
-      <button type="submit">Stem!</button>
-    </form>
-
-    <p id="pollResult" style="margin-top: 15px; color: lime;"></p>
+  <section id="googleform">
+    <h2>Ride-out Inschrijven</h2>
+    <p style="text-align:center; margin-bottom: 20px;">
+      Vul het onderstaande formulier in om je in te schrijven voor de volgende rit. Iedereen is welkom!
+    </p>
+    <iframe 
+      src="https://docs.google.com/forms/d/e/1FAIpQLSdSA8b2b4dhUfnksH6WByI1WaJKGi9xf1ct9zMThTxFkrHLwg/viewform?embedded=true"
+      allowfullscreen>
+      Laden…
+    </iframe>
   </section>
 
   <footer>
-    <p>&copy; 2025 Shameless Bikers</p>
+    &copy; 2025 Shameless Bikers – All rights reserved
   </footer>
 
-  <script>
-    // Poll script
-    const form = document.getElementById('ridePoll');
-    const result = document.getElementById('pollResult');
-
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      const keuze = document.querySelector('input[name="ride"]:checked').value;
-      result.textContent = `Bedankt voor je stem! Jij koos: "${keuze}".`;
-      form.reset();
-    });
-
-    // Contactformulier (optioneel - hier alleen standaard gedrag)
-    const contactForm = document.querySelector('#contact form');
-    contactForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      alert('Bedankt voor je bericht! (Dit is een demo, het formulier wordt niet verzonden)');
-      contactForm.reset();
-    });
-  </script>
-  <section id="googleform">
-  <h2>Ride-out Inschrijfformulier</h2>
-  <iframe 
-    src="https://docs.google.com/forms/d/e/1FAIpQLSdSA8b2b4dhUfnksH6WByI1WaJKGi9xf1ct9zMThTxFkrHLwg/viewform?embedded=true" 
-    width="100%" 
-    height="800" 
-    frameborder="0" 
-    marginheight="0" 
-    marginwidth="0"
-    style="border: none; background-color: white;">
-    Laden…
-  </iframe>
-  </section>
 </body>
 </html>

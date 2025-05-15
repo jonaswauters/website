@@ -15,6 +15,7 @@
       --text-light: #eeeeee;
       --text-muted: #aaaaaa;
       --section-bg: #1a1a1a;
+      --header-height: 120px; /* hoogte van je fixed header */
     }
 
     html {
@@ -23,6 +24,7 @@
 
     body {
       margin: 0;
+      padding-top: var(--header-height); /* ruimte maken voor fixed header */
       font-family: 'Segoe UI', sans-serif;
       background-color: var(--main-bg);
       color: var(--text-light);
@@ -30,15 +32,25 @@
     }
 
     header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: var(--header-height);
       background-color: #000;
       text-align: center;
-      padding: 40px 20px;
+      padding: 40px 20px 0 20px; /* padding top minder dan header height */
+      box-sizing: border-box;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
     header img {
       max-width: 180px;
-      display: block;
-      margin: 0 auto 20px;
+      margin-bottom: 10px;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(255, 68, 68, 0.5);
     }
@@ -48,16 +60,18 @@
       font-size: 3rem;
       text-transform: uppercase;
       letter-spacing: 2px;
+      line-height: 1;
     }
 
     .slogan {
-      margin-top: 10px;
+      margin-top: 5px;
       color: var(--text-muted);
       font-style: italic;
+      font-size: 1rem;
     }
 
     nav {
-      margin-top: 20px;
+      margin-top: 10px;
     }
 
     nav ul {
@@ -67,6 +81,7 @@
       padding: 0;
       gap: 30px;
       flex-wrap: wrap;
+      margin: 10px 0 0 0;
     }
 
     nav a {
@@ -82,17 +97,19 @@
 
     section {
       background-color: var(--section-bg);
-      padding: 60px 20px 60px 20px; /* ruim boven en onder */
+      padding: 60px 20px;
       max-width: 900px;
       margin: 40px auto 0 auto;
       border-radius: 8px;
-      border-top: 1px solid transparent; /* voorkomt margin collapsing */
+
+      /* Scroll-margin-top zorgt dat bij springen naar anker de header ruimte houdt */
+      scroll-margin-top: var(--header-height);
     }
 
     section h2 {
       color: var(--accent);
       font-size: 2rem;
-      margin-top: 0; /* geen margin-top omdat padding van sectie ruimte geeft */
+      margin-top: 0;
       margin-bottom: 20px;
       text-align: center;
       text-transform: uppercase;

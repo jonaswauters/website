@@ -3,153 +3,244 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Shameless Bikers</title>
-  <style>
-    :root {
-      --main-bg: #0d0d0d;
-      --accent: #ff4444;
-      --text-light: #eeeeee;
-      --text-muted: #aaaaaa;
-      --section-bg: #1a1a1a;
-    }
+  <title>Shameless Bikers - Motorclub voor vrijheid en broederschap</title>
+  <meta name="description" content="Shameless Bikers, een motorclub voor vrijheid, avontuur en broederschap.">
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
 
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
+
+  <style>
+    /* Reset en basis */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
     body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: var(--main-bg);
-      color: var(--text-light);
-      line-height: 1.6;
+      margin: 0; font-family: 'Roboto', sans-serif; background: #0d0d0d; color: #eee; line-height: 1.6;
+    }
+    a {
+      color: #ff4444; text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
     }
 
     header {
       background-color: #000;
-      text-align: center;
-      padding: 40px 20px;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 3rem;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-
-    .slogan {
-      margin-top: 10px;
-      color: var(--text-muted);
-      font-style: italic;
-    }
-
-    nav {
-      margin-top: 20px;
-    }
-
-    nav ul {
+      padding: 1rem 2rem;
       display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    header img {
+      height: 60px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px #ff4444aa;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+    }
+    nav li {
+      font-weight: 700;
+    }
+
+    /* Hero sectie */
+    .hero {
+      background: url('hero-bike.jpg') center/cover no-repeat;
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
       justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 1rem;
+      color: #fff;
+      text-shadow: 0 0 10px #000;
+    }
+    .hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+    .hero p {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+    }
+    .btn-primary {
+      background-color: #ff4444;
+      color: white;
+      padding: 1rem 2rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .btn-primary:hover {
+      background-color: #cc0000;
+    }
+
+    /* Secties */
+    section {
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 0 1rem;
+    }
+    section h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2rem;
+      color: #ff4444;
+      margin-bottom: 1rem;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .ledenlijst {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+      gap: 1.5rem;
       list-style: none;
       padding: 0;
-      gap: 30px;
     }
-
-    nav a {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-
-    nav a:hover {
-      color: #fff;
-    }
-
-    section {
-      background-color: var(--section-bg);
-      padding: 60px 20px;
-      max-width: 900px;
-      margin: auto;
+    .ledenlijst li {
+      background: #1a1a1a;
+      padding: 1rem;
       border-radius: 8px;
-      margin-top: 40px;
-    }
-
-    section h2 {
-      color: var(--accent);
-      font-size: 2rem;
-      margin-bottom: 20px;
+      box-shadow: 0 0 10px #ff4444aa;
       text-align: center;
     }
-
-    .ledenlijst {
-      list-style: square;
-      padding-left: 20px;
-      font-size: 1.1rem;
+    .ledenlijst img {
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      margin-bottom: 0.8rem;
+      border: 2px solid #ff4444;
     }
 
-    iframe {
-      width: 100%;
-      height: 800px;
-      border: none;
-      background-color: white;
-      border-radius: 8px;
-    }
-
+    /* Footer */
     footer {
+      background: #000;
       text-align: center;
-      padding: 30px 20px;
-      background-color: #000;
-      color: var(--text-muted);
+      padding: 2rem 1rem;
+      color: #aaa;
       font-size: 0.9rem;
-      margin-top: 60px;
+    }
+
+    /* Responsive */
+    @media(max-width: 600px) {
+      header {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Shameless Bikers</h1>
-    <p class="slogan">Vrijheid. Broederschap. Benzine.</p>
-    <nav>
-      <ul>
-        <li><a href="#over">Over ons</a></li>
-        <li><a href="#leden">Leden</a></li>
-        <li><a href="#googleform">Inschrijven</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <section id="over">
-    <h2>Over ons</h2>
-    <p>
-      Shameless Bikers is een trotse motorgroep die de open wegen verkent. Wij geloven in broederschap, avontuur en het geluid van een krachtige motor. 
-      Onze ritten brengen ons door steden en bergen, en onze vriendschappen zijn gesmeed door asfalt en olie.
-    </p>
-  </section>
-
-  <section id="leden">
-    <h2>Onze leden</h2>
-    <ul class="ledenlijst">
-      <li>Big Mike – Oprichter en Voorzitter</li>
-      <li>Diesel Dave – Road Captain</li>
-      <li>Roxy Rider – Hoofdmonteur</li>
-      <li>Iron Joe – Sergeant-at-Arms</li>
+<header>
+  <img src="1000008850.jpg" alt="Shameless Bikers Logo" />
+  <nav>
+    <ul>
+      <li><a href="#over">Over ons</a></li>
+      <li><a href="#leden">Leden</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#nieuws">Nieuws</a></li>
+      <li><a href="#inschrijven">Inschrijven</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
-  </section>
+  </nav>
+</header>
 
-  <section id="googleform">
-    <h2>Ride-out Inschrijven</h2>
-    <p style="text-align:center; margin-bottom: 20px;">
-      Vul het onderstaande formulier in om je in te schrijven voor de volgende rit. Iedereen is welkom!
-    </p>
-    <iframe 
-      src="https://docs.google.com/forms/d/e/1FAIpQLSdSA8b2b4dhUfnksH6WByI1WaJKGi9xf1ct9zMThTxFkrHLwg/viewform?embedded=true"
-      allowfullscreen>
-      Laden…
-    </iframe>
-  </section>
+<section class="hero">
+  <h1>Shameless Bikers</h1>
+  <p>Vrijheid. Broederschap. Benzine.</p>
+  <button class="btn-primary" onclick="document.getElementById('inschrijven').scrollIntoView({behavior:'smooth'})">Doe mee!</button>
+</section>
 
-  <footer>
-    &copy; 2025 Shameless Bikers – All rights reserved
-  </footer>
+<section id="over">
+  <h2>Over ons</h2>
+  <p>
+    Shameless Bikers is een jonge motorgroep die de open wegen verkent. Wij geloven in broederschap, avontuur en het geluid van een krachtige motor. 
+    Onze ritten brengen ons door steden en bergen, en onze vriendschappen zijn gesmeed door asfalt en olie.
+  </p>
+</section>
+
+<section id="leden">
+  <h2>Onze leden</h2>
+  <ul class="ledenlijst">
+    <li>
+      <img src="leden/celine.jpg" alt="Céline" />
+      <strong>Céline</strong><br />Bikerchick_mt07
+    </li>
+    <li>
+      <img src="leden/benjamin.jpg" alt="Benjamin" />
+      <strong>Benjamin</strong><br />Benjamin.desaedeleer
+    </li>
+    <li>
+      <img src="leden/judith.jpg" alt="Judith" />
+      <strong>Judith</strong><br />Faithless.123
+    </li>
+  </ul>
+</section>
+
+<section id="events">
+  <h2>Aankomende Events</h2>
+  <ul>
+    <li>20 juni 2025 - Zomerrit Ardennen</li>
+    <li>15 juli 2025 - Nachtelijke cruise Antwerpen</li>
+    <li>10 augustus 2025 - BBQ & Motormeet</li>
+  </ul>
+</section>
+
+<section id="nieuws">
+  <h2>Nieuws</h2>
+  <article>
+    <h3>Nieuwe leden welkom</h3>
+    <p>We hebben recent 3 nieuwe leden mogen verwelkomen! Kom gerust een keer meeten.</p>
+  </article>
+</section>
+
+<section id="inschrijven">
+  <h2>Ride-out Inschrijven</h2>
+  <iframe 
+    src="https://docs.google.com/forms/d/e/1FAIpQLSdSA8b2b4dhUfnksH6WByI1WaJKGi9xf1ct9zMThTxFkrHLwg/viewform?embedded=true"
+    style="width:100%; height:700px; border:none; border-radius:8px;"
+    allowfullscreen>
+    Laden…
+  </iframe>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <p>Heb je vragen? Stuur ons een bericht via info@shamelessbikers.nl of volg ons op social media.</p>
+  <p>
+    <a href="mailto:info@shamelessbikers.nl">info@shamelessbikers.nl</a><br />
+    <a href="https://www.facebook.com/shamelessbikers" target="_blank" rel="noopener">Facebook</a> |
+    <a href="https://www.instagram.com/shamelessbikers" target="_blank" rel="noopener">Instagram</a>
+  </p>
+</section>
+
+<footer>
+  &copy; 2025 Shameless Bikers – Alle rechten voorbehouden
+</footer>
 
 </body>
 </html>

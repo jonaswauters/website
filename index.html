@@ -15,7 +15,7 @@
       --text-light: #eeeeee;
       --text-muted: #aaaaaa;
       --section-bg: #1a1a1a;
-      --header-height: 120px; /* hoogte van je fixed header */
+      --header-height: 140px; /* header hoogte inclusief padding */
     }
 
     html {
@@ -24,7 +24,7 @@
 
     body {
       margin: 0;
-      padding-top: var(--header-height); /* ruimte maken voor fixed header */
+      padding-top: var(--header-height); /* ruimte voor fixed header */
       font-family: 'Segoe UI', sans-serif;
       background-color: var(--main-bg);
       color: var(--text-light);
@@ -33,13 +33,11 @@
 
     header {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
+      top: 0; left: 0; right: 0;
       height: var(--header-height);
       background-color: #000;
       text-align: center;
-      padding: 40px 20px 0 20px; /* padding top minder dan header height */
+      padding: 20px;
       box-sizing: border-box;
       z-index: 1000;
       display: flex;
@@ -50,7 +48,7 @@
 
     header img {
       max-width: 180px;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(255, 68, 68, 0.5);
     }
@@ -64,7 +62,7 @@
     }
 
     .slogan {
-      margin-top: 5px;
+      margin-top: 6px;
       color: var(--text-muted);
       font-style: italic;
       font-size: 1rem;
@@ -81,7 +79,7 @@
       padding: 0;
       gap: 30px;
       flex-wrap: wrap;
-      margin: 10px 0 0 0;
+      margin: 8px 0 0 0;
     }
 
     nav a {
@@ -102,7 +100,7 @@
       margin: 40px auto 0 auto;
       border-radius: 8px;
 
-      /* Scroll-margin-top zorgt dat bij springen naar anker de header ruimte houdt */
+      /* voorkomt dat header titel overlapt bij scroll naar anker */
       scroll-margin-top: var(--header-height);
     }
 

@@ -24,9 +24,13 @@
       display: flex; justify-content: space-between; align-items: center;
       padding: 1rem 1.5rem;
     }
-    header img {
+    header a img {
       height: 50px; border-radius: 8px;
       box-shadow: 0 0 10px #ff4444aa;
+      transition: transform 0.3s;
+    }
+    header a:hover img {
+      transform: scale(1.05);
     }
 
     /* Navigatie */
@@ -49,18 +53,16 @@
     }
 
     /* Hero */
-.hero {
-  background: url('1000008850.jpg') center center / contain no-repeat;
-  background-color: #0d0d0d;  /* Zelfde als body achtergrond */
-  height: 80vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 0 1rem;
-  color: #fff;
-  text-shadow: 0 0 10px #000;
+    .hero {
+      background: #0d0d0d url('1000008850.jpg') center center no-repeat;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      height: 80vh;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      text-align: center; padding: 0 1rem;
+      color: #fff; text-shadow: 0 0 10px #000;
     }
     .hero h1 {
       font-family: 'Montserrat', sans-serif;
@@ -130,7 +132,9 @@
 <body>
 
 <header>
-  <img src="1000008850.jpg" alt="Shameless Bikers Logo" />
+  <a href="#">
+    <img src="1000008850.jpg" alt="Shameless Bikers Logo" />
+  </a>
   <nav>
     <div class="menu-toggle" onclick="document.querySelector('nav ul').classList.toggle('active')">
       <span></span><span></span><span></span>
@@ -220,7 +224,6 @@
       if (!response.ok) throw new Error('CSV bestand niet gevonden');
 
       const data = await response.text();
-
       const rows = data.trim().split('\n').slice(1); // header overslaan
       const container = document.getElementById('ledenContainer');
 

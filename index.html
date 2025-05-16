@@ -50,29 +50,12 @@
 
     /* Hero */
     .hero {
-      position: relative;
-      height: 80vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 0 1rem;
-      color: #fff;
-      text-shadow: 0 0 10px #000;
       background: url('hero-bike.jpg') center/cover no-repeat;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 0;
-    }
-    .hero > * {
-      position: relative;
-      z-index: 1;
+      height: 80vh;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      text-align: center; padding: 0 1rem;
+      color: #fff; text-shadow: 0 0 10px #000;
     }
     .hero h1 {
       font-family: 'Montserrat', sans-serif;
@@ -173,10 +156,8 @@
 
 <section id="leden">
   <h2>Onze leden</h2>
-  <ul class="ledenlijst">
-    <li><strong>Céline</strong><br />Bikerchick_mt07</li>
-    <li><strong>Benjamin</strong><br />Benjamin.desaedeleer</li>
-    <li><strong>Judith</strong><br />Faithless.123</li>
+  <ul class="ledenlijst" id="ledenContainer">
+    <!-- Wordt gevuld via JavaScript -->
   </ul>
 </section>
 
@@ -226,6 +207,30 @@
       }
     });
   });
+
+  // Laad leden uit CSV en voeg toe aan de lijst
+  async function loadCSV() {
+    try {
+      const response = await fetch('leden.csv');
+      if (!response.ok) throw new Error('CSV bestand niet gevonden');
+
+      const data = await response.text();
+
+      const rows = data.trim().split('\n').slice(1); // header overslaan
+      const container = document.getElementById('ledenContainer');
+
+      rows.forEach(row => {
+        const [naam, gebruikersnaam] = row.split(',');
+        const li = document.createElement('li');
+        li.innerHTML = `<strong>${naam}</strong><br>${gebruikersnaam}`;
+        container.appendChild(li);
+      });
+    } catch (error) {
+      console.error('Fout bij laden CSV:', error);
+    }
+  }
+
+  loadCSV();
 </script>
 
 </body>

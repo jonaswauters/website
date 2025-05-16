@@ -52,38 +52,59 @@
       border-radius: 2px;
     }
 
-.hero {
-  background-image: url('1000008850.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 80vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 0 1rem;
-  color: #fff;
-  text-shadow: 0 0 10px #000;
-}
-.hero h1 {
-  font-size: 3rem;
-  font-family: 'Montserrat', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-bottom: 0.3rem;
-  color: #b4261d; /* rode kleur */
-}
+    /* Hero */
+    .hero {
+      position: relative;
+      background-image: url('1000008850.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 1rem;
+      color: #fff;
+      text-shadow: 0 0 10px #000;
+      overflow: hidden;
+    }
 
-.hero p {
-  font-size: 1.75rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-bottom: 1.0rem;
-  color: #ca362b; /* rode kleur */
-}
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 0;
+    }
+
+    .hero h1,
+    .hero p,
+    .hero .btn-primary {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-family: 'Montserrat', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.3rem;
+      color: #b4261d;
+    }
+
+    .hero p {
+      font-size: 1.75rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+      color: #ca362b;
+    }
+
     .btn-primary {
       background: #ff4444; color: white;
       padding: 1rem 2rem; font-weight: bold;
@@ -219,7 +240,7 @@
 </footer>
 
 <script>
-  // Sluit het menu automatisch na klikken op een link
+  // Sluit menu bij klik op link (mobiel)
   document.querySelectorAll('nav ul a').forEach(link => {
     link.addEventListener('click', () => {
       const menu = document.querySelector('nav ul');
@@ -229,7 +250,7 @@
     });
   });
 
-  // Laad leden uit CSV en voeg toe aan de lijst
+  // Laad ledenlijst vanuit CSV-bestand
   async function loadCSV() {
     try {
       const response = await fetch('leden.csv');
@@ -238,6 +259,10 @@
       const data = await response.text();
       const rows = data.trim().split('\n').slice(1); // header overslaan
       const container = document.getElementById('ledenContainer');
+
+      if (rows.length === 0) {
+        container.innerHTML = '<li>Geen leden gevonden.</li>';
+      }
 
       rows.forEach(row => {
         const [naam, gebruikersnaam] = row.split(',');
